@@ -8,7 +8,6 @@ import 'screens/ui_login/controller/login_controller.dart';
 import 'screens/ui_login/login_page.dart';
 
 void main() {
-  // on branch dev
   Get.lazyPut(() => LoginCtrl());
   runApp(MyApp());
 }
