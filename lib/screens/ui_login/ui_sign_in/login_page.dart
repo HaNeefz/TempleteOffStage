@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:offstage_common_bnv/components/default_button.dart';
 import 'package:offstage_common_bnv/components/default_textfield.dart';
 import 'package:offstage_common_bnv/navigation/routes/routes.dart';
-import 'package:offstage_common_bnv/screens/ui_login/controller/login_controller.dart';
 
-class LoginPage extends GetView<LoginCtrl> {
+import 'controller/login_controller.dart';
+
+class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -28,11 +29,15 @@ class LoginPage extends GetView<LoginCtrl> {
                 SizedBox(height: 20),
                 Obx(() => DefaultTextField(
                       controller: controller.enterName.value,
+                      currentFocus: controller.nodeName.value,
+                      nextFocus: controller.nodePassword.value,
                       label: 'Name',
                     )),
                 SizedBox(height: 10),
                 Obx(() => DefaultTextField(
                       controller: controller.enterPassword.value,
+                      currentFocus: controller.nodePassword.value,
+                      secure: true,
                       label: 'Password',
                     )),
                 SizedBox(height: 10),

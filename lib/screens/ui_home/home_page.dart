@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:offstage_common_bnv/app_controller/app_controller.dart';
-import 'package:offstage_common_bnv/screens/ui_login/controller/login_controller.dart';
+import 'package:offstage_common_bnv/screens/ui_login/ui_sign_in/controller/login_controller.dart';
 
-import './screen_2.dart';
+import 'controller/controller_home.dart';
+import 'screen_2.dart';
 
-class HomePage extends GetView<LoginCtrl> {
-  final MainCtrl mainController = MainCtrl.to;
+class HomePage extends GetView<LoginController> {
+  final AppController mainController = AppController.to;
+  final HomeController homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +16,13 @@ class HomePage extends GetView<LoginCtrl> {
         elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(LineIcons.lock),
-            onPressed: () => mainController.logout(),
+            icon: Icon(Icons.settings),
+            onPressed: () => mainController.gotoSetting(context),
           )
         ],
+        centerTitle: false,
         title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("${controller.user!.value.name!}"),
             Text(
@@ -32,28 +35,26 @@ class HomePage extends GetView<LoginCtrl> {
       ),
       body: Container(
         color: Colors.lightBlueAccent,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Center(
-              child: Container(
-                child: Text(
-                  'Home',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+        child: SingleChildScrollView(
+          controller: homeController.scrollController.value,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              ...List.generate(
+                50,
+                (index) => ListTile(
+                  title: Text(index.toString()),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Screen2(
+                                index: index.toString(),
+                              ))),
                 ),
-                margin: EdgeInsets.all(16),
-              ),
-            ),
-            Center(),
-            TextButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Screen2()));
-              },
-              child: Text('Go to next screen'),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

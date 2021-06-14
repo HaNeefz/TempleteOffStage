@@ -4,12 +4,12 @@ import 'package:offstage_common_bnv/navigation/bottom_navigation.dart';
 
 import 'app_controller/app_controller.dart';
 import 'navigation/tab_navigation.dart';
-import 'screens/ui_login/controller/login_controller.dart';
-import 'screens/ui_login/login_page.dart';
+import 'screens/ui_login/ui_sign_in/controller/login_controller.dart';
+import 'screens/ui_login/ui_sign_in/login_page.dart';
 
 void main() {
   // on branch dev
-  Get.lazyPut(() => LoginCtrl());
+  Get.lazyPut(() => LoginController());
   runApp(MyApp());
 }
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MainScreen extends StatelessWidget {
-  final MainCtrl controller = Get.put(MainCtrl());
+  final AppController controller = Get.put(AppController());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

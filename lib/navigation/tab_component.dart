@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:offstage_common_bnv/screens/ui_calenda/calendar_page.dart';
 import 'package:offstage_common_bnv/screens/ui_home/home_page.dart';
-import 'package:offstage_common_bnv/screens/ui_profile/profile_page.dart';
-import 'package:offstage_common_bnv/screens/ui_setting/setting_page.dart';
+import 'package:offstage_common_bnv/screens/ui_notification/notification_page.dart';
+import 'package:offstage_common_bnv/screens/ui_search/search_page.dart';
 
 import 'bottom_navigation.dart';
 
@@ -13,6 +13,7 @@ class TabComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Template(child: _buildTab());
     return _buildTab();
   }
 
@@ -23,9 +24,9 @@ class TabComponent extends StatelessWidget {
     } else if (tabName[tabItem] == "tab2") {
       widget = CalendarPage();
     } else if (tabName[tabItem] == "tab3") {
-      widget = ProfilePage();
+      widget = SearchPage();
     } else {
-      widget = SettingPage();
+      widget = NotificationPage();
     }
     return widget;
   }

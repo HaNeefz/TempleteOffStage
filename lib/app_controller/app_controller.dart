@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:offstage_common_bnv/navigation/routes/routes.dart';
 import 'package:offstage_common_bnv/navigation/xcore.dart';
-import 'package:offstage_common_bnv/screens/ui_login/controller/login_controller.dart';
+import 'package:offstage_common_bnv/screens/ui_home/controller/controller_home.dart';
+import 'package:offstage_common_bnv/screens/ui_login/ui_sign_in/controller/login_controller.dart';
+import 'package:offstage_common_bnv/screens/ui_settings/ui_setting/setting_page.dart';
 
-class MainCtrl extends GetxController {
-  static MainCtrl get to => Get.find();
+class AppController extends GetxController {
+  static AppController get to => Get.find();
 
   Rx<TabItem> _currentTab = TabItem.tab1.obs;
   Rx<TabItem> get currentTab => _currentTab;
@@ -18,7 +21,6 @@ class MainCtrl extends GetxController {
 
   @override
   void onClose() {
-    print('onClose MainCtrl');
     super.onClose();
   }
 
@@ -44,18 +46,27 @@ class MainCtrl extends GetxController {
 
   void selectTab(TabItem tabItem) {
     if (tabItem == _currentTab.value) {
-      // pop to first route
-      // if (_navigatorKeys[tabItem]!.currentState!.canPop()) {
-      //   _navigatorKeys[tabItem]!.currentState!.pop();
-      // }
-      _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
+      /// Pop one step
+      if (_navigatorKeys[tabItem]!.currentState!.canPop()) {
+        _navigatorKeys[tabItem]!.currentState!.pop();
+      } else {
+        if (tabItem == TabItem.tab1) {
+          final HomeController homeController = HomeController.to;
+          homeController.scrollOnTop();
+        }
+      }
+
+      /// pop to first route
+      // _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
     } else {
       _currentTab(tabItem);
     }
   }
 
+  void gotoSetting(context) => Routes.push(context, SettingPage());
+
   void logout() {
-    final LoginCtrl loginController = LoginCtrl.to;
+    final LoginController loginController = LoginController.to;
     loginController.logout();
   }
 }

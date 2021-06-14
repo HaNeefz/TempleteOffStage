@@ -71,6 +71,7 @@ class SignupPage extends GetView<SignUpController> {
         SizedBox(height: 20),
         DefaultTextField(
           controller: controller.controllerPhoneNumber.value,
+          keyboard: TextInputType.number,
           prefixText: '+66',
           label: 'Phone number',
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:offstage_common_bnv/screens/ui_login/controller/login_controller.dart';
+import 'package:offstage_common_bnv/screens/ui_login/ui_sign_in/controller/login_controller.dart';
 import 'package:offstage_common_bnv/utils/dialogs/popup.dart';
 
 class SignUpController extends GetxController {
@@ -16,6 +16,17 @@ class SignUpController extends GetxController {
   Rx<bool> get isPressedVerify => _isPressedVerify;
   Rx<bool> get isCodeCorrect => _isCodeCorrect;
   Rx<bool> get isLoading => _isLoading;
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    controllerPhoneNumber.close();
+    super.onClose();
+  }
 
   void setVerify() {
     if (controllerPhoneNumber.value.text.isEmpty) {
@@ -34,7 +45,7 @@ class SignUpController extends GetxController {
   void checkCode(String code) {
     if (_assumeCode == code) {
       _isLoading(true);
-      final LoginCtrl loginController = LoginCtrl.to;
+      final LoginController loginController = LoginController.to;
       loginController.onSigninByPass('Haneef', '1234');
     } else {
       Popup.error();

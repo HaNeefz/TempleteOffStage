@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'screen_3.dart';
 
 class Screen2 extends StatelessWidget {
+  final String? index;
+
+  const Screen2({Key? key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +20,7 @@ class Screen2 extends StatelessWidget {
           children: <Widget>[
             Container(
               child: Text(
-                'Screen 2',
+                '${index ?? ''}',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               margin: EdgeInsets.all(16),

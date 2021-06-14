@@ -32,8 +32,9 @@ class BottomNavigation extends StatelessWidget {
         children: [
           _generateNavigation(context, 0, LineIcons.home, "Main"),
           _generateNavigation(context, 1, LineIcons.calendar, "Calenda"),
-          _generateNavigation(context, 2, LineIcons.user, "Account"),
-          _generateNavigation(context, 3, LineIcons.search, "Search"),
+          _generateNavigation(context, 2, LineIcons.search, "Search"),
+          _generateNavigation(
+              context, 3, Icons.notifications_none, "Notification"),
         ],
       ),
     );
