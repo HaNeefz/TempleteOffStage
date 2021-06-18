@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:offstage_common_bnv/navigation/routes/routes.dart';
 import 'package:offstage_common_bnv/navigation/xcore.dart';
-import 'package:offstage_common_bnv/screens/ui_home/controller/controller_home.dart';
+import 'package:offstage_common_bnv/screens/ui_home/ui_home_page/controller/controller_home.dart';
 import 'package:offstage_common_bnv/screens/ui_login/ui_sign_in/controller/login_controller.dart';
 import 'package:offstage_common_bnv/screens/ui_settings/ui_setting/setting_page.dart';
 

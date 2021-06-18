@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:offstage_common_bnv/screens/ui_home/screen_2.dart';
 
 class CalendarPage extends StatelessWidget {
   @override
@@ -9,8 +8,10 @@ class CalendarPage extends StatelessWidget {
         color: Colors.red,
         child: Center(
           child: TextButton(
-            onPressed: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Screen2())),
+            onPressed: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => DetailEmployee()));
+            },
             child: Text('Go to next screen'),
           ),
         ),

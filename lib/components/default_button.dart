@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {
   final String? text;
-  final Color? foregroundColor;
-  final Color? backgroundColor;
+  final Color foregroundColor;
+  final Color backgroundColor;
   final Function? onPressed;
   const DefaultButton({
     Key? key,
@@ -21,18 +21,19 @@ class DefaultButton extends StatelessWidget {
       child: ElevatedButton(
         child: Text(
           text ?? '',
-          style: TextStyle(color: Colors.white),
+          // style: TextStyle(color: Colors.white),
         ),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(backgroundColor!),
-          foregroundColor: MaterialStateProperty.all<Color>(backgroundColor!),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              onPressed == null ? Colors.grey : backgroundColor),
+          foregroundColor: MaterialStateProperty.all<Color>(foregroundColor),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
         ),
-        onPressed: () => onPressed?.call(),
+        onPressed: onPressed != null ? () => onPressed?.call() : null,
       ),
     );
   }

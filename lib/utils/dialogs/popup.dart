@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Popup {
-  static Future<bool>? success() async {
+  static Future<bool> success() async {
     return await Get.dialog(
       AlertDialog(
         content: Text('Success'),
@@ -11,34 +11,41 @@ class Popup {
     );
   }
 
-  static Future<bool>? error() async {
+  static Future<bool> error([String? message]) async {
     return await Get.dialog(
       AlertDialog(
-        content: Text('Failed'),
+        content: Text(message ?? 'Failed'),
         actions: [_buttonCancel()],
       ),
     );
   }
 
-  static Future<bool>? actions() async {
+  static Future<bool> actions(
+    String content, {
+    Function? onConfirm,
+    Function? onCancel,
+  }) async {
     return await Get.defaultDialog(
       radius: 5,
-      middleText: 'Dialog Actions',
+      middleText: content,
       actions: [
-        _buttonCancel(),
-        _buttonConfirm(),
+        _buttonCancel(onCancel),
+        _buttonConfirm(onConfirm),
       ],
     );
   }
 
-  static TextButton _buttonCancel() {
+  static TextButton _buttonCancel([Function? onCancel]) {
     return TextButton(
       child: Text('CLOSE'),
-      onPressed: () => Get.back(result: false),
+      onPressed: () {
+        Get.back(result: false);
+        onCancel?.call();
+      },
     );
   }
 
-  static TextButton _buttonConfirm() {
+  static TextButton _buttonConfirm([Function? onConfirm]) {
     return TextButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
@@ -47,7 +54,10 @@ class Popup {
         'OK',
         style: TextStyle(color: Colors.white),
       ),
-      onPressed: () => Get.back(result: true),
+      onPressed: () {
+        Get.back(result: true);
+        onConfirm?.call();
+      },
     );
   }
 }

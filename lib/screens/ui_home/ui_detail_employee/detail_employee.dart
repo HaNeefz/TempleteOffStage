@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:offstage_common_bnv/models/employee_model.dart';
 
-import 'screen_3.dart';
+import '../screen_3.dart';
 
-class Screen2 extends StatelessWidget {
-  final String? index;
+class DetailEmployee extends StatelessWidget {
+  final Employee data;
 
-  const Screen2({Key? key, this.index}) : super(key: key);
+  const DetailEmployee({Key? key, required this.data}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +21,7 @@ class Screen2 extends StatelessWidget {
           children: <Widget>[
             Container(
               child: Text(
-                '${index ?? ''}',
+                data.name ?? '',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               margin: EdgeInsets.all(16),

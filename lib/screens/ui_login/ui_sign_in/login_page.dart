@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:offstage_common_bnv/components/app_loading.dart';
 import 'package:offstage_common_bnv/components/default_button.dart';
 import 'package:offstage_common_bnv/components/default_textfield.dart';
 import 'package:offstage_common_bnv/navigation/routes/routes.dart';
@@ -43,14 +44,11 @@ class LoginPage extends GetView<LoginController> {
                 SizedBox(height: 10),
                 Obx(() {
                   if (controller.pressOnSave.value) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return AppLoading();
                   } else {
                     return DefaultButton(
                       text: 'Sign in',
-                      foregroundColor: Colors.white,
-                      onPressed: () => controller.onSignin(),
+                      onPressed: () async => await controller.onSignin(),
                     );
                   }
                 }),

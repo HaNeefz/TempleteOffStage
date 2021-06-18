@@ -6,10 +6,12 @@ import 'app_controller/app_controller.dart';
 import 'navigation/tab_navigation.dart';
 import 'screens/ui_login/ui_sign_in/controller/login_controller.dart';
 import 'screens/ui_login/ui_sign_in/login_page.dart';
+import 'services/service.dart';
 
 void main() {
   // on branch dev
   Get.lazyPut(() => LoginController());
+  Service.init();
   runApp(MyApp());
 }
 

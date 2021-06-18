@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offstage_common_bnv/screens/ui_calenda/calendar_page.dart';
-import 'package:offstage_common_bnv/screens/ui_home/home_page.dart';
+import 'package:offstage_common_bnv/screens/ui_home/ui_home_page/home_page.dart';
 import 'package:offstage_common_bnv/screens/ui_notification/notification_page.dart';
 import 'package:offstage_common_bnv/screens/ui_search/search_page.dart';
 

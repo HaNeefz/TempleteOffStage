@@ -38,8 +38,11 @@ class Routes {
 
   static void login() => Get.offAll(() => LoginPage());
 
-  static void signup() => Get.to(() => SignupPage(),
-      binding: BindingsBuilder.put(() => SignUpController()));
+  static void signup([String? name]) => Get.to(
+        () => SignupPage(),
+        arguments: name,
+        binding: BindingsBuilder.put(() => SignUpController()),
+      );
 
   static void main() => Get.offAll(() => MainScreen());
 }

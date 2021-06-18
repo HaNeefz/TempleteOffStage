@@ -46,11 +46,11 @@ class TextFieldOTP extends StatelessWidget {
           decoration: InputDecoration(
             counter: Offstage(),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue, width: 2),
+              borderSide: BorderSide(color: Colors.grey, width: 2),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.deepPurple, width: 2),
+              borderSide: BorderSide(color: Colors.blue, width: 2),
               borderRadius: BorderRadius.circular(10),
             ),
           ),
