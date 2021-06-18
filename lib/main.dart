@@ -10,6 +10,7 @@ import 'services/service.dart';
 
 void main() {
   // on branch dev
+  // Test previous commit id
   Get.lazyPut(() => LoginController());
   Service.init();
   runApp(MyApp());
